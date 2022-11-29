@@ -30,14 +30,15 @@
         <div class="text-end">
           <button type="button" class="btn btn-outline-light me-2" href="{{route('login')}}">Login</button>
           <button type="button" class="btn btn-warning">Sign-up</button>
+          <button type="button" class="btn btn-outline-light me-2" href="{{route('logout')}}">logout</button>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="container">
-    @yield('content')
-  </div>
+    <div class="container">
+      @yield('content')
+    </div>
 
 </body>
 </html>
