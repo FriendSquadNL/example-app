@@ -1,25 +1,28 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
 class Thread extends Model
-{
-    use HasFactory;
+    {
+        use HasFactory;
+        /**
+         * The attributes that are mass assignable.
+         * @var array<int, string>
+         */
 
-   /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'title',
-        'content',
-        'user_id',
-    ];
+        protected $fillable = 
+            [
+                'title',
+                'content',
+                'user_id',
+            ];
 
+        public function topics(){
+            return $this->belongsTo(Topic::class);
+        }
 
-}
+        public function user(){
+            return $this->belongsTo(User::class);
+        }
+    }

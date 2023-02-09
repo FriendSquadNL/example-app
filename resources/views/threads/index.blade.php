@@ -1,3 +1,7 @@
+@extends('layouts.master')
+
+@section('content')
+
 @foreach ($threads as $thread)
     <div>
         <h2>{{$thread->title}}</h2>
@@ -5,3 +9,5 @@
         <hr />
     </div>
 @endforeach
+
+@endsection

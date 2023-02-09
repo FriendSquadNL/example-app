@@ -1,22 +1,38 @@
-@if ($errors->any())
+@extends('layouts.master')
 
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+@section('content')
 
-@endif
+    @if ($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
 
-<form action="/topics" method="post">
-    @csrf
-    <input type="text" name="title">
-    <textarea name="content" id="" cols="30" rows="10"></textarea>
-    <select name="thread_id">
-        @foreach($threads as $thread)
-            <option value="{{$thread->id}}">{{$thread->title}}</option>
-        @endforeach
-    </select>
-    <input type="hidden" name="user_id" value="1">
-    <input type="submit" value="submit">
-</form>
+    <form action="{{ route('topics.store') }}" method="post" class="form">
+        @csrf
+       <br>
+        <div>
+            <!-- <label for="*">Enter name</label> -->
+            <!-- <input type="text" name="title"> -->
+            <input type="text" name="title" placeholder="Enter a title" />
+        </div>
+        <br>
+        <div>
+            <!-- <label for="*">Enter content</label> -->
+            <textarea name="content" cols="30" rows="10" placeholder="Enter text"></textarea>
+        </div>
+
+        <div>
+            <select name="user_id">
+                @foreach($users as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+            </select>
+            <input type="hidden" name="user_id" value="1">
+            <input type="submit" value="submit">
+        </div>
+    </form>
+
+@endsection

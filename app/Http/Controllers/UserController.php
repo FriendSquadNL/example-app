@@ -15,7 +15,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = Users::all();
+        $users = User::with('topics')->get();
+        //return $users;
         return View('users.index', ['users' => $users]);
     }
 
@@ -37,7 +38,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->all());
+        
+        return redirect()->route('user.index');
     }
 
     /**
@@ -48,9 +51,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        return view('user.create', [
+            'user' => User::findOrFail($id)
+        ]);
+
         $user = User::find($id);
-        return $user;
+        return $user->replies;
     }
 
     /**

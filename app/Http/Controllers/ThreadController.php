@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Thread;
+use App\Models\Topic;
+use App\Models\User;
 
 class ThreadController extends Controller
 {
@@ -41,7 +43,8 @@ class ThreadController extends Controller
         //
 
         $thread = Thread::create($request->all());
-        return $thread;
+        
+        return redirect()->route('threads.index');
         
     }
 

@@ -3,7 +3,7 @@
 @section('content')
     @foreach ($topics as $topic)
         <div>
-            <h2>{{$topic->title}}</h2>
+            <a href="/topics/{{$topic->id}}">{{$topic->title}}</a>
             <p>{{$topic->content}}</p>
             <hr />
         </div>

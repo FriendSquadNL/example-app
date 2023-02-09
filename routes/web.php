@@ -7,6 +7,7 @@ use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TopicController;
 use App\Models\User;
+use app\views\auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +24,20 @@ Route::get('/', function () {
     return view('index');
 }) ->name('index');
 
+// Route::get('/register', function () {
+//     return view('index');
+// })->middleware(['auth', 'verified'])->name('register');
 
-Route::get('/register', function () {
-    return view('register');
-})->middleware(['auth', 'verified'])->name('register');
+// Route::get('/login', function () {
+//     return view('index');
+// })->middleware(['auth', 'verified'])->name('login');
 
+// // Route::get('/logout', function () {
+// //     return view('auth');
+// // })->name('logout');
 
-Route::get('/logout', function () {
-    return view('logout');
-})->middleware(['auth', 'verified'])->name('logout');
-
-Route::get('/login', function () {
-    return view('index');
-})->middleware(['auth', 'verified'])->name('index');
+// Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+// ->name('logout');
 
 // Route::get('/hallo/{id}', function ($id) {
 //     return view('try', ['name' => $id]);
@@ -44,15 +46,16 @@ Route::get('/login', function () {
 // Route::get('/test', function () {
 //     return User::all();
 // });
+// })->middleware(['auth', 'verified'
 
 Route::resource('threads', ThreadController::class);
 Route::resource('replies', ReplyController::class);
 Route::resource('users', UserController::class);
 Route::resource('topics', TopicController::class);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

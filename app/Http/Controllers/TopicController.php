@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
 use App\Models\Topic;
 use App\Models\Thread;
+use App\Models\User;
 
 class TopicController extends Controller
 {
@@ -15,7 +17,6 @@ class TopicController extends Controller
      */
     public function index()
     {
-        //
         $topics = Topic::all();
         return View('topics.index', ['topics' => $topics]);
     }
@@ -27,9 +28,8 @@ class TopicController extends Controller
      */
     public function create()
     {
-        //
-        $threads = Thread::all();
-        return View('topics.create', ['threads' => $threads]);
+        $users = User::all();
+        return View('topics.create', ['users' => $users]);
     }
 
     /**
@@ -46,9 +46,9 @@ class TopicController extends Controller
             'user_id' => 'required|numeric',
             'thread_id' => 'required'
         ]);
-        //
-        $topic = Topic::create($request->all());
-        return $topic;
+        
+        $topic = Topic::create($request->all()); 
+        return redirect()->route('topics.index');
     }
 
     /**
