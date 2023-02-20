@@ -14,13 +14,10 @@
         @csrf
        <br>
         <div>
-            <!-- <label for="*">Enter name</label> -->
-            <!-- <input type="text" name="title"> -->
             <input type="text" name="title" placeholder="Enter a title" />
         </div>
         <br>
         <div>
-            <!-- <label for="*">Enter content</label> -->
             <textarea name="content" cols="30" rows="10" placeholder="Enter text"></textarea>
         </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reply;
+use App\Models\User;
 
 class ReplyController extends Controller
 {
@@ -14,8 +15,8 @@ class ReplyController extends Controller
      */
     public function index()
     {
-        $replies = Reply::with('user')->get();
-        return view('replies.index', compact('replies'));
+     $replies = Reply::with('user')->get();
+        return view('replies.index', compact('replies'));   
         $replies = Reply::with('topic')->get();
         return view('replies.index', compact('replies'));
     }
@@ -28,7 +29,8 @@ class ReplyController extends Controller
     public function create()
     {
         //
-        return view('replies.create');
+        $users = User::all();
+        return view('replies.create', compact('users'));
     }
 
     /**

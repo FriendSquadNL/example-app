@@ -24,17 +24,17 @@ Route::get('/', function () {
     return view('index');
 }) ->name('index');
 
-// Route::get('/register', function () {
-//     return view('index');
-// })->middleware(['auth', 'verified'])->name('register');
+Route::get('/register', function () {
+    return view('index');
+})->middleware(['auth', 'verified'])->name('register');
 
-// Route::get('/login', function () {
-//     return view('index');
-// })->middleware(['auth', 'verified'])->name('login');
+Route::get('/login', function () {
+    return view('index');
+})->middleware(['auth', 'verified'])->name('login');
 
-// // Route::get('/logout', function () {
-// //     return view('auth');
-// // })->name('logout');
+Route::get('/logout', function () {
+    return view('auth');
+})->name('logout');
 
 // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
 // ->name('logout');
@@ -53,6 +53,7 @@ Route::resource('replies', ReplyController::class);
 //Route::get('/replies', [ReplyController::class, 'index'])->name('reply.index');
 Route::resource('users', UserController::class);
 Route::resource('topics', TopicController::class);
+//Route::resource('topics/{id}', [TopicController::class, 'show'])->name('topic');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
