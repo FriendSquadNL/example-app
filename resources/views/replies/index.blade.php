@@ -1,7 +1,15 @@
+
+@extends('layouts.master')
+
+@section('content')
+
 @foreach ($replies as $reply)
     <div>
-        <h2>{{$reply->title}}</h2>
+        <p>{{$reply->user->name}}</p> 
+        <p>{{$reply->topic->title}}</p>
         <p>{{$reply->content}}</p>
-        <hr />
+        <hr/>
     </div>
 @endforeach
+
+@endsection

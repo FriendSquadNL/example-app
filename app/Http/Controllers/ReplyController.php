@@ -14,9 +14,10 @@ class ReplyController extends Controller
      */
     public function index()
     {
-        //
-        $replies = Reply::all();
-        return View('replies.index', ['replies' => $replies]);
+        $replies = Reply::with('user')->get();
+        return view('replies.index', compact('replies'));
+        $replies = Reply::with('topic')->get();
+        return view('replies.index', compact('replies'));
     }
 
     /**
@@ -38,7 +39,15 @@ class ReplyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'user_id' => 'required|numeric',
+            'thread_id' => 'required'
+        ]);
+        
+        $reply = Reply::create($request->all()); 
+        return redirect()->route('replies.index');
     }
 
     /**

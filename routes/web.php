@@ -50,6 +50,7 @@ Route::get('/', function () {
 
 Route::resource('threads', ThreadController::class);
 Route::resource('replies', ReplyController::class);
+//Route::get('/replies', [ReplyController::class, 'index'])->name('reply.index');
 Route::resource('users', UserController::class);
 Route::resource('topics', TopicController::class);
 

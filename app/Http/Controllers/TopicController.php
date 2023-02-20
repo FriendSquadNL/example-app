@@ -61,7 +61,7 @@ class TopicController extends Controller
     {
         //
         $topic = Topic::find($id);
-        return $topic;
+        return View('topics.topic_id', ['topic' => $topic]);
     }
 
     /**

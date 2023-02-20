@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Reply;
+
 
 class Topic extends Model
 {
@@ -24,5 +26,9 @@ class Topic extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function reply(){
+        return $this->belongsTo(Reply::class);
     }
 }

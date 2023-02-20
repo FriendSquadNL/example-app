@@ -28,11 +28,13 @@
             <li><a href="{{route('dashboard')}}" class="nav-link px-2 text-white ">Profile</a></li>
             <li><a href="{{route('topics.index')}}" class="nav-link px-2 text-white">Topics</a></li>
             <li><a href="{{route('threads.index')}}" class="nav-link px-2 text-white">Threads</a></li>
+            <li><a href="{{route('replies.index')}}" class="nav-link px-2 text-white">Replies</a></li>
+
             <!-- <li><a href="#" class="nav-link px-2 text-white">#</a></li>
             <li><a href="#" class="nav-link px-2 text-white">#</a></li> -->
           </ul>
 
-          @if(Route::current()->getName() == "threads.index" || Route::current()->getName() == "topics.index" )
+          @if(Route::current()->getName() == "threads.index" || Route::current()->getName() == "topics.index" || Route::current()->getName() == "replies.index" )
             <a class="nav-link px-2 text-white" href="{{url()->current()}}/create">Create</a></button>
           @endif
 

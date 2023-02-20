@@ -20,7 +20,11 @@ class Reply extends Model
                 'topic_id'
             ];
 
-        public function user(){
-                    return $this->belongsTo(User::class);
-            }
+        public function topic(){
+            return $this->belongsTo(Topic::class);
+        }
+
+        public function user() {
+            return $this->belongsTo(User::class);
+        }
     }

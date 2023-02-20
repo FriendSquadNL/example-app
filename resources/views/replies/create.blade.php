@@ -9,6 +9,11 @@
         <input type="hidden" name="user_id" value="1">
         <input type="hidden" name="topic_id" value="1">
         <input type="submit" value="submit">
+            <select name="user_id">
+                @foreach($users as $user)
+                    <option value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+            </select>
     </form>
 
 @endsection
