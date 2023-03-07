@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Topic;
 use App\Models\Thread;
 use App\Models\User;
@@ -41,15 +42,30 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
+        // Auth::
         $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'user_id' => 'required|numeric',
+            // 'user_id' => 'required|numeric',
             'thread_id' => 'required'
         ]);
-        
-        $topic = Topic::create($request->all()); 
-        return redirect()->route('topics.index');
+
+        $topic = $request->all();
+
+        if (Auth::check()) { 
+            $topic['user_id'] = Auth::id();
+            $users = Auth::name();
+            //$names = Auth::name();
+            // $id = Auth::id();
+            //return $user->topics;
+    
+            $topic = Topic::create($topic); 
+           //return $user->topics;
+            return redirect()->route('topics.index')->with('topics', $user->topics);
+        }else{
+            return "niet ingelogd";
+        }
+    
     }
 
     /**
@@ -60,17 +76,9 @@ class TopicController extends Controller
      */
     public function show(int $id)
     {
-        //
         $topic = Topic::where('id', $id)->with('replies')->first();
         $users = User::all();
-        // $replies = $topic->replies;
         return view('topics.topic_id', compact('topic', 'users'));
-    
-        // $user = Reply::with('user')->get();
-        // return view('topic.topic_id', compact('topic'));
-
-        // $replies = Reply::with('topic')->get();
-        // return view('topic.topic_id', compact('topic'));
     }
 
     /**

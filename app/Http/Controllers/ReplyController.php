@@ -15,8 +15,7 @@ class ReplyController extends Controller
      */
     public function index()
     {
-     $replies = Reply::with('user')->get();
-        return view('replies.index', compact('replies'));   
+        $replies = Reply::with('user')->get();
         $replies = Reply::with('topic')->get();
         return view('replies.index', compact('replies'));
     }
@@ -42,10 +41,9 @@ class ReplyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
             'content' => 'required',
             'user_id' => 'required|numeric',
-            'thread_id' => 'required'
+            'thread_id' => 'required|numeric'
         ]);
         
         $reply = Reply::create($request->all()); 

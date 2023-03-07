@@ -15,6 +15,7 @@
     </style>
 </head>
 <body>
+  <?php  use Illuminate\Support\Facades\Auth; ?>
     <header class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -27,26 +28,20 @@
             <li><a href="{{route('index')}}" class="nav-link px-2 text-white">Home</a></li>
             <li><a href="{{route('dashboard')}}" class="nav-link px-2 text-white ">Profile</a></li>
             <li><a href="{{route('topics.index')}}" class="nav-link px-2 text-white">Topics</a></li>
-            <li><a href="{{route('threads.index')}}" class="nav-link px-2 text-white">Threads</a></li>
-            <li><a href="{{route('replies.index')}}" class="nav-link px-2 text-white">Replies</a></li>
-
-            <!-- <li><a href="#" class="nav-link px-2 text-white">#</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">#</a></li> -->
+            <!-- <li><a href="{{route('threads.index')}}" class="nav-link px-2 text-white">Threads</a></li>
+            <li><a href="{{route('replies.index')}}" class="nav-link px-2 text-white">Replies</a></li> -->
           </ul>
 
-          @if(Route::current()->getName() == "threads.index" || Route::current()->getName() == "topics.index" || Route::current()->getName() == "replies.index" )
-            <a class="nav-link px-2 text-white" href="{{url()->current()}}/create">Create</a></button>
+          @if(Route::current()->getName() == "threads.index" || Route::current()->getName() == "topics.index" || Route::current()->getName() == "replies.index")
+            @if(Auth::check())
+              <a class="nav-link px-2 text-white" href="{{url()->current()}}/create">Create</a></button>
+            @endif()
           @endif
 
-          <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-          </form> -->
-
-          <div class="text-end">
+            <div class="text-end">
             <button type="button" class="btn btn-outline-light me-2"><a class="nav-anchor" href="{{route('login')}}">Login</a></button>
             <button type="button" class="btn btn-outline-light me-2"><a class="nav-anchor" href="{{route('register')}}">Register</a></button>
             <button type="button" class="btn btn-outline-light me-2"><a class="nav-anchor" href="{{route('logout')}}">Logout</a></button>
-            <!-- <button type="button" class="btn btn-outline-light me-2"><a class="nav-anchor" href="{{route('dashboard')}}">Your profile</a></button> -->
           </div>
         </div>
       </div>

@@ -10,26 +10,17 @@
         </ul>
     @endif
 
-    <form action="{{ route('topics.store') }}" method="post" class="form">
+    <form action="{{route('topics.store')}}" method="post" class="form">
         @csrf
        <br>
         <div>
             <input type="text" name="title" placeholder="Enter a title" />
-        </div>
-        <br>
-        <div>
+            <br>    
             <textarea name="content" cols="30" rows="10" placeholder="Enter text"></textarea>
-        </div>
-
-        <div>
-            <select name="user_id">
-                @foreach($users as $user)
-                    <option value="{{$user->id}}">{{$user->name}}</option>
-                @endforeach
-            </select>
-            <input type="hidden" name="user_id" value="1">
+        <h5>{{(Auth::user()->name)}}</h5>
+            <input type="hidden" name="thread_id" value="1">
+            <!-- <input type="hidden" name="user_id" value="1"> -->
             <input type="submit" value="submit">
         </div>
     </form>
-
 @endsection
