@@ -6,7 +6,10 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TopicController;
+use App\Models\Topic;
+use App\Models\Thread;
 use App\Models\User;
+use App\Models\Reply;
 use app\views\auth;
 
 /*
@@ -19,6 +22,20 @@ use app\views\auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+class TopicController extends Controller
+    {
+        /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function index()
+        {
+            $topics = Topic::all();
+            return View('topics.index', ['topics' => $topics]);
+        }
+    }
 
 Route::get('/', function () {
     return view('index');
