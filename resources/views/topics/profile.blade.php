@@ -2,6 +2,7 @@
 
 @section('content')
 
+ @if(Auth::check())
        {{$topic->title}} <br>
        {{$topic->content}}
        <br>  <br> <br> 

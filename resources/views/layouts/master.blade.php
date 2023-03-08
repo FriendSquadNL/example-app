@@ -25,9 +25,8 @@
           </a>
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{{route('index')}}" class="nav-link px-2 text-white">Home</a></li>
-            <li><a href="{{route('dashboard')}}" class="nav-link px-2 text-white ">Profile</a></li>
-            <li><a href="{{route('topics.index')}}" class="nav-link px-2 text-white">Topics</a></li>
+            <li><a href="{{route('topics.index')}}" class="nav-link px-2 text-white">Home</a></li>
+            <!-- <li><a href="{{route('topics.index')}}" class="nav-link px-2 text-white">Topics</a></li> -->
             <!-- <li><a href="{{route('threads.index')}}" class="nav-link px-2 text-white">Threads</a></li>
             <li><a href="{{route('replies.index')}}" class="nav-link px-2 text-white">Replies</a></li> -->
           </ul>
