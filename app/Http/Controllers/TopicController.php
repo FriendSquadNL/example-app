@@ -76,9 +76,8 @@ class TopicController extends Controller
      */
     public function show(int $id)
     {
-        $topic = Topic::where('id', $id)->with('replies')->first();
-        $users = User::all();
-        return view('topics.topic_id', compact('topic', 'users'));
+        $topic = Topic::where('id', $id)->with('replies')->with('replies.user')->first();
+        return view('topics.topic_id', compact('topic'));
     }
 
     /**

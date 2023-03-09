@@ -6,9 +6,16 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Topic;
+use App\Models\Thread;
+use App\Models\User;
+use App\Models\Reply;
 
 class ProfileController extends Controller
 {
+
+
+
     /**
      * Display the user's profile form.
      *

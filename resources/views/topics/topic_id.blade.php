@@ -5,8 +5,13 @@
        {{$topic->content}}
        <br>  <br> <br> 
        @foreach($topic->replies as $reply)
-       {{$reply->content}}
-       {{$reply->user_id}}
+       <div>
+         <b>{{$reply->user->name}}</b><br />
+        {{$reply->content}}
+        {{$reply->user_id}}
+
+        <hr/>
+</div>
        @endforeach
        
        <br> <br> <br> <br>

@@ -7,9 +7,20 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Topic;
+use App\Models\Thread;
+use App\Models\User;
+use App\Models\Reply;
 
 class AuthenticatedSessionController extends Controller
 {
+    public function index()
+    {
+        $topics = Topic::all();
+        return View('topics.index', ['topics' => $topics]);
+    }
+
+
     /**
      * Display the login view.
      *
